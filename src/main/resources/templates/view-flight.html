@@ -7,7 +7,7 @@
     <object th:include="fragments/fragment :: js"></object>
 </head>
 <body>
-    <nav th:replace="fragments/fragment :: navbar"></nav>
+    <nav th:replace="fragments/fragment :: navbar(title='Flight ' + ${flight.flightNumber})"></nav>
     <a th:href="@{/flight/delete/{id}(id=${flight.id})}">Remove</a>
     <a th:href="@{/flight/update/{id}(id=${flight.id})}">Edit</a>
     <hr>

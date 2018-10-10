@@ -7,7 +7,7 @@
     <object th:include="fragments/fragment :: js"></object>
 </head>
 <body>
-    <nav th:replace="fragments/fragment :: navbar"></nav>
+    <nav th:replace="fragments/fragment :: navbar(title='Add Flight')"></nav>
     <h1>Hello!</h1>
     <h3>Tambah Penerbangan</h3>
     <form th:action="@{/flight/add}" th:object="${flight}" method="POST">

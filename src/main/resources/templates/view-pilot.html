@@ -7,7 +7,7 @@
     <object th:include="fragments/fragment :: js"></object>
 </head>
 <body>
-    <nav th:replace="fragments/fragment :: navbar"></nav>
+    <nav th:replace="fragments/fragment :: navbar(title='Pilot ' + ${pilot.licenseNumber})"></nav>
     <div class="card m-2">
         <div class="card-body">
             <h3 th:text="'Pilot License Number : ' + ${pilot.licenseNumber}"></h3>
