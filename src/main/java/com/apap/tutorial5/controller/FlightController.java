@@ -1,6 +1,7 @@
 package com.apap.tutorial5.controller;
 
 import com.apap.tutorial5.model.FlightModel;
+import com.apap.tutorial5.model.FlightStarter;
 import com.apap.tutorial5.model.PilotModel;
 import com.apap.tutorial5.service.IFlightService;
 import com.apap.tutorial5.service.IPilotService;
@@ -8,6 +9,8 @@ import com.apap.tutorial5.service.PilotService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.logging.Level;
@@ -26,20 +29,30 @@ public class FlightController {
 
     @RequestMapping(value = "/flight/add/{licenseNumber}", method = RequestMethod.GET)
     private String add(@PathVariable(value = "licenseNumber") String licenseNumber, Model model) {
-        PilotModel pilot = pilotService.getPilotDetailByLicenseNumber(licenseNumber);
-        LOGGER.log(Level.INFO, String.format("Pilot License Number: %s", pilot.getLicenseNumber()));
+        FlightStarter flightStarter = flightService.createFlightStarterFactory(licenseNumber);
+        flightStarter.add(flightService.createFlightFactory(licenseNumber));
 
-        FlightModel flight = new FlightModel();
-        flight.setPilot(pilot);
-
-        model.addAttribute("flight", flight);
+        model.addAttribute("flightStarter", flightStarter);
         return "addFlight";
     }
 
-    @RequestMapping(value = "/flight/add", method = RequestMethod.POST)
-    private String addSubmitFlight(@ModelAttribute FlightModel newFlight) {
-        flightService.addFlight(newFlight);
+    @RequestMapping(value = "/flight/add/{licenseNumber}", method = RequestMethod.POST, params = {"save"})
+    private String saveFlights(@PathVariable(value = "licenseNumber") String licenseNumber, @ModelAttribute FlightStarter flightStarter, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()) {
+            return "addFlight";
+        }
+        LOGGER.log(Level.WARNING, flightStarter.getFlightRows().toString());
+        boolean success = flightService.addBulkFlight(flightStarter);
+
+        if(!success) return "addFlight";
         return "add";
+    }
+
+    @RequestMapping(value = "/flight/add/{licenseNumber}", method = RequestMethod.POST, params = {"addRow"})
+    private String addRow(@PathVariable(value = "licenseNumber") String licenseNumber, @ModelAttribute FlightStarter flightStarter, BindingResult bindingResult) {
+        // we put bindingResult here to override server field check
+        flightStarter.add(flightService.createFlightFactory(licenseNumber));
+        return "addFlight";
     }
 
     @RequestMapping(value = "/flight/view/{id}", method = RequestMethod.GET)
