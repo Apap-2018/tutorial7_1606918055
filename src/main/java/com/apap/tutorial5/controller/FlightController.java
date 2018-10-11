@@ -9,13 +9,17 @@ import com.apap.tutorial5.service.PilotService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * https://github.com/thymeleaf/thymeleafexamples-stsm/blob/3.0-master/src/main/webapp/WEB-INF/templates/seedstartermng.html
+ * https://github.com/thymeleaf/thymeleafexamples-stsm/blob/3.0-master/src/main/java/thymeleafexamples/stsm/web/controller/SeedStarterMngController.java
+ * https://www.thymeleaf.org/doc/tutorials/3.0/thymeleafspring.html#dynamic-fields
+ */
 @Controller
 public class FlightController {
 
