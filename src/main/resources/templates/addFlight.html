@@ -28,7 +28,7 @@
                 <tbody>
                     <tr th:each="flightr, rowIter : *{flightRows}">
                         <th>
-                            <input type="hidden" name="pilot" class="form-control" th:field="*{flightRows[__${rowIter.index}__].pilot}">
+                            <input type="hidden" name="pilotLicenseNumber" class="form-control" th:field="*{flightRows[__${rowIter.index}__].pilotLicenseNumber}">
                             <input type="text" name="flightNumber" class="form-control" th:field="*{flightRows[__${rowIter.index}__].flightNumber}">
                         </th>
                         <th>

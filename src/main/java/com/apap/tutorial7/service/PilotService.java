@@ -1,7 +1,7 @@
-package com.apap.tutorial5.service;
+package com.apap.tutorial7.service;
 
-import com.apap.tutorial5.model.PilotModel;
-import com.apap.tutorial5.repository.PilotDB;
+import com.apap.tutorial7.model.PilotModel;
+import com.apap.tutorial7.repository.PilotDB;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,9 +24,8 @@ public class PilotService implements IPilotService {
     }
 
     @Override
-    public Boolean addPilot(PilotModel pilot) {
-        pilotDb.save(pilot);
-        return true;
+    public PilotModel addPilot(PilotModel pilot) {
+        return pilotDb.save(pilot);
     }
 
     @Override

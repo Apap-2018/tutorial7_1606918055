@@ -2,30 +2,30 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title th:text="${pilot.licenseNumber}"></title>
+    <title th:text="${pilotLicenseNumber.licenseNumber}"></title>
     <object th:include="fragments/fragment :: css"></object>
     <object th:include="fragments/fragment :: js"></object>
 </head>
 <body>
-    <nav th:replace="fragments/fragment :: navbar(title='Pilot ' + ${pilot.licenseNumber})"></nav>
+    <nav th:replace="fragments/fragment :: navbar(title='Pilot ' + ${pilotLicenseNumber.licenseNumber})"></nav>
     <div class="card m-2">
         <div class="card-body">
-            <h3 th:text="'Pilot License Number : ' + ${pilot.licenseNumber}"></h3>
-            <h3 th:text="'Name :' + ${pilot.name}"></h3>
-            <h3 th:text="'Fly Hour: ' + ${pilot.flyHour}"></h3>
-            <h3 th:text="${pilot.flyHour} >= 100 ? 'Status: Pilot Senior' : 'Status: Pilot Junior'"></h3>
+            <h3 th:text="'Pilot License Number : ' + ${pilotLicenseNumber.licenseNumber}"></h3>
+            <h3 th:text="'Name :' + ${pilotLicenseNumber.name}"></h3>
+            <h3 th:text="'Fly Hour: ' + ${pilotLicenseNumber.flyHour}"></h3>
+            <h3 th:text="${pilotLicenseNumber.flyHour} >= 100 ? 'Status: Pilot Senior' : 'Status: Pilot Junior'"></h3>
             <div class="card">
                 <div class="card-body">
-                    <a class="card-link" th:href="@{/pilot/update/{id}(id=${pilot.id})}">Edit Pilot</a>
-                    <a class="card-link" th:href="@{/pilot/delete/{id}(id=${pilot.id})}">Delete Pilot</a>
-                    <a class="card-link" th:href="@{/flight/add/{licenseNumber}(licenseNumber=${pilot.licenseNumber})}">Add Flight</a>
+                    <a class="card-link" th:href="@{/pilotLicenseNumber/update/{id}(id=${pilotLicenseNumber.id})}">Edit Pilot</a>
+                    <a class="card-link" th:href="@{/pilotLicenseNumber/delete/{id}(id=${pilotLicenseNumber.id})}">Delete Pilot</a>
+                    <a class="card-link" th:href="@{/flight/add/{licenseNumber}(licenseNumber=${pilotLicenseNumber.licenseNumber})}">Add Flight</a>
                 </div>
             </div>
         </div>
     </div>
     <div class="card m-2">
         <div class="card-body">
-            <form th:action="@{/flight/delete/}" th:object="${pilot}" method="POST">
+            <form th:action="@{/flight/delete/}" th:object="${pilotLicenseNumber}" method="POST">
                 <table class="table table-responsive">
                     <h3>Flights</h3>
                     <thead>

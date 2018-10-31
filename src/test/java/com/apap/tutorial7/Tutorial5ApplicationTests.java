@@ -1,4 +1,4 @@
-package com.apap.tutorial4;
+package com.apap.tutorial7;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class Tutorial4ApplicationTests {
+public class Tutorial5ApplicationTests {
 
     @Test
     public void contextLoads() {

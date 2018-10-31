@@ -1,4 +1,6 @@
-package com.apap.tutorial5.model;
+package com.apap.tutorial7.model;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -24,7 +26,7 @@ public class PilotModel extends AbstractEntity implements Serializable {
     @Column(name = "fly_hour", nullable = false)
     private int flyHour;
 
-    @OneToMany(mappedBy = "pilot", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "pilotLicenseNumber", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private List<FlightModel> pilotFlights;
 
     public PilotModel() {

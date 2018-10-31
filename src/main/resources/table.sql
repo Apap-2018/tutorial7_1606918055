@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS pilot;
-CREATE TABLE pilot (
+DROP TABLE IF EXISTS pilotLicenseNumber;
+CREATE TABLE pilotLicenseNumber (
   id BIGINT PRIMARY KEY AUTO_INCREMENT,
   name VARCHAR (50) NOT NULL,
   license_number VARCHAR (50) NOT NULL UNIQUE,

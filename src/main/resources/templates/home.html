@@ -17,8 +17,8 @@
                         Tambah Pilot
                     </div>
                     <div class="card-body">
-                        <p class="card-text">Fitur untuk menambah pilot</p>
-                        <a class="btn btn-primary" th:href="@{/pilot/add}">Tambah</a>
+                        <p class="card-text">Fitur untuk menambah pilotLicenseNumber</p>
+                        <a class="btn btn-primary" th:href="@{/pilotLicenseNumber/add}">Tambah</a>
                     </div>
                 </div>
             </div>
@@ -29,10 +29,10 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">
-                        Cari pilot berdasarkan nomor lisensi
+                        Cari pilotLicenseNumber berdasarkan nomor lisensi
                     </div>
                     <div class="card-body">
-                        <form th:action="@{/pilot/view}" method="GET">
+                        <form th:action="@{/pilotLicenseNumber/view}" method="GET">
                             <label for="licenseNumber">License Number</label>
                             <input id="licenseNumber" type="text" name="licenseNumber" class="form-control">
                             <input type="submit" class="btn btn-primary mt-2" value="Cari">

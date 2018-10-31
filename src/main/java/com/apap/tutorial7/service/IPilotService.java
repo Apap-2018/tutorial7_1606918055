@@ -1,6 +1,6 @@
-package com.apap.tutorial5.service;
+package com.apap.tutorial7.service;
 
-import com.apap.tutorial5.model.PilotModel;
+import com.apap.tutorial7.model.PilotModel;
 
 public interface IPilotService {
 
@@ -8,7 +8,7 @@ public interface IPilotService {
 
     PilotModel getPilotById(Long id);
 
-    Boolean addPilot(PilotModel pilot);
+    PilotModel addPilot(PilotModel pilot);
 
     Boolean deletePilotById(long id);
 
