@@ -45,4 +45,10 @@ public class RestController {
     public List<FlightModel> retrieveListFlight() {
         return flightService.getAllFlight();
     }
+
+    @DeleteMapping("/{flightID}")
+    public String deleteFlight(@PathVariable("flightID") Long flightId) {
+        flightService.deleteFlightById(flightId);
+        return "flight has been deleted";
+    }
 }
